@@ -10,11 +10,11 @@ The toggle, **Bites come at random**, changes when fish bite. On, each cast has 
 
 ## Dynamic
 
-TODO after playtesting: what one other person did with the toggle on, then off. For example: how many casts before they packed up, whether they cast faster during a dry stretch, whether they noticed the every-4th pattern.
+One playtester played a round with the toggle on, then off. With bites at random, they kept casting to catch more fish than another person and to see how high a catch their luck could reach. With bites on every 4th cast, they spotted the pattern, clicked through the casts as fast as they could, and gave up about halfway through the bait. The same average catch kept them playing one way and made them quit the other. One result I did not expect: chance turned a solo game into a contest, so Competition showed up alongside Chance.
 
 ## Aesthetic
 
-TODO after playtesting: what they said they felt each way, in their words where you can.
+With bites at random, they said it felt very random, and that was the fun: hoping for a lucky streak and a bigger catch than someone else's. With bites on every 4th cast, they said there was no point in playing, since they knew every 4th cast would bite, and no point in finishing. The fixed schedule took out the surprise, and the reason to keep casting went with it.
 
 ## Sources
 
