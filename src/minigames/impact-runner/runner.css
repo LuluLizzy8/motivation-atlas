@@ -1,0 +1,28 @@
+.impact-runner { border: 1px solid var(--line); border-radius: 14px; padding: clamp(12px, 3vw, 24px); background: var(--surface); color: var(--ink); }
+.ir-heading { display: flex; flex-wrap: wrap; gap: 4px 20px; justify-content: space-between; }
+.ir-heading strong { font-family: var(--mono); letter-spacing: .09em; }
+.ir-heading span, .ir-hint { color: var(--muted); }
+.ir-score { font-family: var(--mono); font-size: .85rem; }
+.ir-board { display: block; width: 100%; height: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; }
+.ir-ground { stroke: var(--muted); stroke-width: 2; }
+.ir-person { stroke: var(--ink); stroke-width: 4; fill: var(--surface); }
+.ir-bin { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
+.ir-flames { fill: var(--aes); }
+.ir-flame-core { fill: var(--warn); }
+.ir-impact { fill: none; stroke: var(--aes); stroke-width: 4; }
+.ir-status { min-height: 3.2em; }
+.ir-controls { display: flex; flex-wrap: wrap; gap: 12px; }
+.ir-controls button { min-height: 48px; padding: 10px 18px; border: 1px solid var(--accent); border-radius: 7px; background: var(--accent-soft); color: var(--ink); font: inherit; cursor: pointer; touch-action: manipulation; }
+.ir-controls button:disabled { opacity: .5; cursor: default; }
+.ir-toggle { display: flex; align-items: center; gap: 10px; min-height: 48px; margin-top: 10px; cursor: pointer; }
+.ir-toggle input { width: 20px; height: 20px; accent-color: var(--accent); }
+.ir-hint, .ir-reflect { font-size: .9rem; }
+.ir-reflect { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 8px; }
+.ir-reflect h4 { margin-bottom: 6px; }
+
+/* Only this game's wrapper uses its own complete README dropdown. */
+.minigame:has(> .minigame-host > .impact-runner) > .minigame-howto,
+.minigame:has(> .minigame-host > .impact-runner) > .minigame-about { display: none; }
+.ir-readme { margin-top: 20px; border-top: 1px solid var(--line); padding-top: 14px; }
+.ir-readme summary { cursor: pointer; font-weight: 600; }
+.ir-readme h4 { margin-bottom: 8px; }
