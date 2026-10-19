@@ -1,0 +1,16 @@
+.fog-maze { border: 1px solid var(--line); border-radius: 16px; padding: clamp(12px, 3vw, 24px); background: var(--surface); }
+.fog-maze button { min-height: 44px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--accent-soft); color: var(--ink); font: inherit; cursor: pointer; }
+.fog-maze input { width: 20px; height: 20px; vertical-align: middle; accent-color: var(--accent); }
+.fog-board { display: grid; grid-template-columns: repeat(9, 1fr); width: 100%; max-width: 396px; margin: 20px auto; gap: 3px; }
+.fog-cell { aspect-ratio: 1; display: grid; place-items: center; font: 700 clamp(12px, 4vw, 22px) var(--mono); border-radius: 4px; }
+.fog-cell.unknown { background: var(--ink); color: var(--bg); }
+.fog-cell.wall { background: var(--line); color: var(--muted); }
+.fog-cell.path { background: var(--bg); color: var(--ink); }
+.fog-cell.player { background: var(--accent); color: var(--bg); }
+.fog-cell.landmark { background: var(--aes-soft); color: var(--aes); }
+.fog-controls { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 360px; margin: 16px auto; }
+.fog-controls [data-direction="up"] { grid-column: 2; }
+.fog-controls [data-direction="left"] { grid-column: 1; }
+.fog-status { font-weight: 600; }
+.fog-legend { color: var(--muted); font-size: .85rem; }
+.fog-reflect { border-top: 1px solid var(--line); margin-top: 20px; }

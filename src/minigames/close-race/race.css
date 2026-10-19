@@ -1,0 +1,30 @@
+.close-race { display: grid; gap: 14px; }
+.close-race-intro, .close-race-status, .close-race-reflect { margin: 0; }
+.close-race-tracks { display: grid; gap: 12px; }
+.close-race-lane { display: grid; grid-template-columns: 34px minmax(0, 1fr) 46px; gap: 8px; align-items: center; }
+.close-race-name, .close-race-position { font-size: 0.85rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.close-race-track { height: 36px; border: 1px solid var(--line); border-radius: 5px; background: repeating-linear-gradient(0deg, var(--bg) 0 12px, var(--surface) 12px 17px); position: relative; overflow: hidden; }
+.close-race-track::after { content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 3px; background: var(--ink); }
+.close-race-racer { position: absolute; z-index: 2; top: 50%; transform: translate(-50%, -50%); transition: left 70ms linear, top 100ms ease; font-size: 1.35rem; line-height: 1; }
+.player-racer { color: var(--accent); }
+.bot-racer { color: var(--dyn); }
+.close-race-racer.is-jumping { top: 10%; text-shadow: 0 0 8px var(--accent-soft); }
+.close-race-racer.is-squatting { top: 82%; transform: translate(-50%, -50%) scaleY(0.55); }
+.close-race-racer.is-slowed { opacity: 0.5; filter: grayscale(1); }
+.close-race-hazard { position: absolute; z-index: 1; transform: translate(-50%, -50%); color: var(--warn); font-size: 0.85rem; }
+.close-race-hazard.is-high { top: 12%; }
+.close-race-hazard.is-low { bottom: 4%; transform: translate(-50%, 0); }
+.close-race-finish { margin: 0; text-align: right; color: var(--muted); font: 0.8rem var(--mono); }
+.close-race-controls { display: grid; gap: 12px; }
+.close-race-pace-label { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.close-race-speed { font: 500 1rem var(--body); padding: 8px 10px; min-height: 42px; max-width: 100%; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); color: var(--ink); }
+.close-race-mechanics { border: 1px solid var(--line); border-radius: 8px; display: grid; gap: 8px; padding: 12px 16px; }
+.close-race-mechanics legend { font: 500 0.75rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.close-race-mechanics label { display: flex; gap: 8px; align-items: flex-start; }
+.close-race-mechanics input { margin-top: 6px; flex: 0 0 auto; }
+.close-race-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.close-race-button { font: 600 1rem var(--body); padding: 10px 18px; border-radius: 8px; border: 2px solid var(--ink); background: var(--ink); color: var(--surface); cursor: pointer; min-height: 44px; }
+.close-race-button.secondary { background: transparent; color: var(--ink); }
+.close-race-button:disabled { opacity: 0.45; cursor: not-allowed; }
+.close-race-reflect { border-left: 4px solid var(--aes); padding: 8px 14px; background: var(--bg); }
+@media (prefers-reduced-motion: reduce) { .close-race-racer { transition: none; } }

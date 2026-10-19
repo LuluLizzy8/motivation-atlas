@@ -1,0 +1,34 @@
+.pebble-sort { display: grid; gap: 16px; }
+.ps-board { display: grid; gap: 10px; justify-items: center; text-align: center; }
+.ps-status { margin: 0; min-height: 3.2em; max-width: 36ch; }
+.ps-tray { display: flex; align-items: center; gap: 16px; min-height: 4.5rem; }
+.ps-hand { font-size: 4rem; line-height: 1; min-width: 4.5rem; }
+.ps-next { display: flex; gap: 8px; font-size: 1.4rem; opacity: 0.55; min-width: 9rem; }
+.ps-readout { margin: 0; font-variant-numeric: tabular-nums; color: var(--muted); }
+.ps-bar { width: 100%; max-width: 360px; height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.ps-bar[hidden] { display: none; }
+.ps-bar-fill { height: 100%; background: var(--warn); transition: width 100ms linear; }
+.ps-bowls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; max-width: 420px; }
+.ps-bowl { display: grid; justify-items: center; gap: 2px; padding: 10px 4px; min-height: 84px; border-radius: 999px 999px 18px 18px / 40px 40px 18px 18px; border: 2px solid var(--line); background: var(--surface); color: var(--ink); font: 600 0.95rem var(--body); cursor: pointer; touch-action: manipulation; }
+.ps-bowl:active { transform: translateY(2px); }
+.ps-bowl[aria-disabled="true"] { opacity: 0.4; cursor: not-allowed; }
+.ps-bowl kbd { font: 500 0.7rem var(--mono); color: var(--muted); }
+.ps-glyph { font-size: 1.6rem; line-height: 1; }
+.ps-kind-0 { color: var(--mech); }
+.ps-kind-1 { color: var(--dyn); }
+.ps-kind-2 { color: var(--aes); }
+.ps-bowl.ps-kind-0 { border-color: var(--mech); }
+.ps-bowl.ps-kind-1 { border-color: var(--dyn); }
+.ps-bowl.ps-kind-2 { border-color: var(--aes); }
+.ps-bowl span:not(.ps-glyph) { color: var(--ink); }
+.ps-hand.ps-bounce { animation: ps-bounce 220ms ease-out; }
+@keyframes ps-bounce { 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+@media (prefers-reduced-motion: reduce) { .ps-hand.ps-bounce { animation: none; } .ps-bar-fill { transition: none; } }
+.ps-mechanics { border: 1px solid var(--line); border-radius: 8px; display: grid; gap: 8px; padding: 12px 16px; }
+.ps-mechanics legend { font: 500 0.75rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.ps-btn { font: 600 1rem var(--body); padding: 10px 22px; border-radius: 8px; border: 2px solid var(--ink); background: none; color: var(--ink); cursor: pointer; justify-self: start; }
+.ps-panel h4 { margin: 0 0 6px; }
+.ps-dynamics { padding-left: 18px; font-size: 0.95rem; }
+.ps-reflect { border-left: 4px solid var(--aes, var(--accent)); padding: 8px 16px; background: var(--bg); border-radius: 0 6px 6px 0; }
+.ps-reflect h4 { margin: 0 0 4px; }
+.ps-reflect ul { margin: 0; padding-left: 18px; }

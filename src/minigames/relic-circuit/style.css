@@ -1,0 +1,9 @@
+.relic-circuit { max-width: 30rem; padding: 1rem; border: 1px solid currentColor; border-radius: .75rem; }
+.relic-circuit label { display: flex; align-items: center; gap: .6rem; }
+.relic-circuit input { min-width: 1.25rem; min-height: 1.25rem; }
+.circuit-board { display: grid; grid-template-columns: repeat(5, 1fr); gap: .25rem; max-width: 21rem; margin: 1rem auto; }
+.circuit-cell { display: grid; place-items: center; aspect-ratio: 1; border: 1px solid currentColor; border-radius: .3rem; font: bold 1.4rem monospace; }
+.circuit-hidden { opacity: .55; border-style: dashed; }
+.circuit-controls { display: grid; grid-template-columns: repeat(4, 1fr); gap: .35rem; margin-bottom: .75rem; }
+.relic-circuit button { min-height: 44px; padding: .4rem; cursor: pointer; }
+.relic-circuit :focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }

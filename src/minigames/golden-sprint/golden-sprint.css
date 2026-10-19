@@ -1,0 +1,29 @@
+.golden-port { display: grid; gap: 12px; }
+.golden-port-toolbar { display: flex; justify-content: flex-end; }
+.golden-port-expand { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); padding: 8px 12px; font: 600 .8rem var(--body); cursor: pointer; }
+.golden-port-expand:hover { border-color: var(--accent); }
+.golden-port-frame {
+  display: block;
+  width: 100%;
+  height: min(72svh, 620px);
+  min-height: 440px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0b0a12;
+}
+.golden-port-mechanic { display: grid; gap: 7px; padding: 11px 15px; border: 1px solid var(--line); border-radius: 8px; }
+.golden-port-mechanic legend { color: var(--muted); font: 500 .75rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.golden-port-mechanic label { display: flex; gap: 10px; align-items: center; font-weight: 650; }
+.golden-port-mechanic input { width: 24px; height: 24px; accent-color: var(--accent); }
+.golden-port-mechanic p, .golden-port-focus { margin: 0; color: var(--muted); font-size: .88rem; }
+.golden-port-reflect { border-left: 4px solid var(--aes, var(--accent)); padding: 8px 16px; background: var(--bg); border-radius: 0 6px 6px 0; }
+.golden-port-reflect h4 { margin: 0 0 4px; }
+.golden-port-reflect ul { margin: 0; padding-left: 18px; }
+.golden-port:fullscreen { grid-template-rows: auto 1fr; gap: 0; width: 100vw; height: 100vh; padding: 0; background: #0b0a12; }
+.golden-port:fullscreen .golden-port-mechanic, .golden-port:fullscreen .golden-port-focus, .golden-port:fullscreen .golden-port-reflect { display: none; }
+.golden-port:fullscreen .golden-port-toolbar { position: fixed; z-index: 2; top: 10px; right: 12px; }
+.golden-port:fullscreen .golden-port-expand { background: #17111de6; color: #fff; border-color: #ffffff55; }
+.golden-port:fullscreen .golden-port-frame { width: 100vw; height: 100vh; min-height: 0; border: 0; border-radius: 0; }
+@media (max-width: 560px) {
+  .golden-port-frame { height: 70svh; min-height: 500px; }
+}

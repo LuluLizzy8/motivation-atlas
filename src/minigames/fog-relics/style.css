@@ -1,0 +1,22 @@
+.fog-relics { border: 1px solid var(--line); border-radius: 18px; padding: clamp(14px, 4vw, 28px); background: var(--surface); margin-block: 16px; }
+.fog-relics .fb-heading p { color: var(--muted); margin-top: 0; }
+.fog-relics .fb-toggle { display: flex; align-items: center; gap: 10px; font-weight: 700; padding: 12px; background: var(--dyn-soft); border-radius: 10px; }
+.fog-relics input { width: 22px; height: 22px; accent-color: var(--dyn); }
+.fog-relics .fb-hint, .fog-relics .fb-legend { color: var(--muted); font-size: .85rem; }
+.fog-relics .fb-stats { font: 600 .8rem/1.8 var(--mono); }
+.fog-relics .fb-board { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; max-width: 380px; margin: 20px auto; }
+.fog-relics .fb-cell { aspect-ratio: 1; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 10px; font: 600 clamp(20px, 5vw, 32px)/1 var(--mono); background: var(--bg); }
+.fog-relics .fb-unknown { background: var(--ink); color: var(--surface); }
+.fog-relics .fb-wall { color: var(--muted); background: var(--line); }
+.fog-relics .fb-relic { color: var(--aes); background: var(--aes-soft); }
+.fog-relics .fb-home { color: var(--dyn); background: var(--dyn-soft); }
+.fog-relics .fb-player { color: var(--surface); background: var(--accent); outline: 2px solid var(--accent); outline-offset: 1px; }
+.fog-relics .fb-message { min-height: 3em; font-weight: 600; }
+.fog-relics .fb-controls { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; }
+.fog-relics button { min-height: 46px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); padding: 10px; font: inherit; cursor: pointer; }
+.fog-relics button:hover { background: var(--accent-soft); }
+.fog-relics button:disabled { opacity: .5; cursor: default; }
+.fog-relics .fb-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 16px; }
+.fog-relics .fb-reflection { border-left: 3px solid var(--dyn); padding: 1px 16px; background: var(--dyn-soft); }
+.fog-relics summary { cursor: pointer; padding-block: 10px; }
+.fog-relics .fb-history { font: .8rem/1.7 var(--mono); }

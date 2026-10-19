@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#130e20">
+  <title>Golden Sprint — Midas Touch</title>
+  <meta name="description" content="Guide King Midas to the River Pactolus in a myth-inspired survival platformer.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+    <canvas id="game" aria-label="Golden Sprint platform game"></canvas>
+
+    <section id="menu" class="screen active" aria-labelledby="game-title">
+      <div class="menu-shade"></div>
+      <div class="menu-copy">
+        <p class="eyebrow">A MYTH OF GREED, HUNGER & REDEMPTION</p>
+        <h1 id="game-title"><span>GOLDEN</span> SPRINT</h1>
+        <p class="subtitle">Reach the River Pactolus before the golden curse consumes you.</p>
+        <label class="player-name" for="player-name">Runner name (optional) <input id="player-name" type="text" name="runnerName" maxlength="16" autocomplete="nickname" enterkeyhint="go" placeholder="Midas" aria-describedby="player-name-note"></label>
+        <p id="player-name-note" class="local-note">Saved only in this browser for the local leaderboard.</p>
+        <div class="menu-actions">
+          <button class="primary" id="play">Begin the myth <span>→</span></button>
+          <button class="secondary" id="skip">Skip tutorial · Stage I</button>
+          <button class="secondary" id="open-playtest">Fast walkthrough</button>
+        </div>
+        <label class="setting-toggle"><input id="hp-toggle" type="checkbox" checked><span></span><b>Hunger drains over time</b></label>
+        <label class="setting-toggle"><input id="sfx-toggle" type="checkbox" checked><span></span><b>Sound effects</b></label>
+        <button id="open-guide" class="text-button">Controls & collector's almanac</button>
+      </div>
+      <p class="credit">ARTWORK CREATED WITH GEMINI</p>
+    </section>
+
+    <section id="story" class="screen" aria-live="polite">
+      <div class="story-card">
+        <div id="story-art" class="story-art" data-scene="0">
+          <div id="story-character" class="story-character"></div>
+          <div class="story-mist"></div>
+          <div class="story-sparks"></div>
+          <div class="story-curtain"></div>
+        </div>
+        <div class="story-copy">
+          <p id="story-kicker" class="eyebrow"></p>
+          <h2 id="story-title"></h2>
+          <p id="story-text"></p>
+          <div class="story-progress"><span id="story-progress"></span></div>
+          <p class="story-hint">Click, tap, or press any key</p>
+        </div>
+      </div>
+      <button id="story-skip" class="corner-button">Skip story</button>
+    </section>
+
+    <section id="hud" aria-label="Game status">
+      <div class="hud-left">
+        <div class="gauge-heading"><span>NOURISHMENT</span><strong id="health-text">100%</strong></div>
+        <div class="gauge-shell"><div id="health-bar"></div></div>
+        <div id="power" class="power land"><span class="seal">✋</span><span id="power-label">GOLDEN TOUCH</span></div>
+      </div>
+      <div class="stage-block"><span id="stage-kicker">CHAPTER I</span><strong id="stage-name">ROSE GARDEN</strong></div>
+      <div class="hud-right">
+        <span id="route-badge" class="route-badge">4× AUTO WALKTHROUGH</span>
+        <div id="flasks" class="flasks"><span>◇</span><span>◇</span><span>◇</span></div>
+        <div class="score"><small>TREASURY</small><strong id="score">000000</strong></div>
+        <button id="pause-toggle" class="hud-button" aria-label="Pause game">Ⅱ</button>
+      </div>
+    </section>
+
+    <aside id="tutorial-controls" class="tutorial-controls" aria-label="Tutorial controls" aria-live="polite">
+      <strong>ROSE GARDEN CONTROLS</strong>
+      <p>Move <kbd>A/D</kbd> or <kbd>←/→</kbd> · Jump <kbd>W</kbd>/<kbd>↑</kbd>/<kbd>Space</kbd> · Crouch <kbd>S</kbd>/<kbd>↓</kbd> · Attack <kbd>X</kbd> · Brick or eat <kbd>E</kbd></p>
+      <p id="tutorial-tip">Follow the garden path to learn each move.</p>
+    </aside>
+
+    <div id="toast" role="status"></div>
+    <div id="boss-label"><span>FINAL PURSUIT</span><div><i id="boss-bar"></i></div></div>
+
+    <section id="pause" class="modal" aria-labelledby="pause-title">
+      <div class="modal-card compact">
+        <p class="eyebrow">THE MYTH WAITS</p><h2 id="pause-title">Journey paused</h2>
+        <button id="resume" class="primary">Resume</button>
+        <button id="restart" class="secondary">Restart stage</button>
+        <label class="setting-toggle modal-toggle"><input id="pause-hp-toggle" type="checkbox" checked><span></span><b>Hunger drains over time</b></label>
+        <label class="setting-toggle modal-toggle"><input id="pause-sfx-toggle" type="checkbox" checked><span></span><b>Sound effects</b></label>
+        <button id="quit" class="text-button">Return to title</button>
+      </div>
+    </section>
+
+    <section id="playtest-panel" class="modal" aria-labelledby="playtest-title">
+      <div class="modal-card playtest-card">
+        <button id="close-playtest" class="close" aria-label="Close">×</button>
+        <p class="eyebrow">PLAYTEST INTERFACE</p><h2 id="playtest-title">Fast victory walkthrough</h2>
+        <p class="panel-intro">Watch Midas automatically complete the game at high speed. The demo runs, swims, clears enemies, reaches every midpoint, and advances through each room.</p>
+        <button id="watch-all" class="primary walkthrough-start">Watch full game walkthrough</button>
+        <div id="room-grid" class="room-grid">
+          <button data-room="0"><small>WATCH FROM ROOM 0</small><strong>Rose Garden</strong><span>Start the automatic demo at the tutorial.</span></button>
+          <button data-room="1"><small>WATCH FROM ROOM I</small><strong>Foothills</strong><span>Start at the Satyr encounter.</span></button>
+          <button data-room="2"><small>WATCH FROM ROOM II</small><strong>Tributary</strong><span>Start at the Harpy and water route.</span></button>
+          <button data-room="3"><small>WATCH ROOM III</small><strong>Pactolus</strong><span>Preview the final victory route.</span></button>
+        </div>
+        <p class="unlock-note">The walkthrough is a demonstration and does not unlock campaign rooms.</p>
+      </div>
+    </section>
+
+    <section id="room-complete" class="modal" aria-labelledby="room-complete-title">
+      <div class="modal-card compact">
+        <p class="eyebrow">ROUTE CLEARED</p><h2 id="room-complete-title">Room complete</h2>
+        <p id="room-complete-text">The next room is now unlocked.</p>
+        <button id="next-room" class="primary">Enter next room</button>
+        <button id="replay-room" class="secondary">Replay this room</button>
+        <button id="rooms-button" class="text-button">Fast walkthrough</button>
+      </div>
+    </section>
+
+    <section id="guide" class="modal" aria-labelledby="guide-title">
+      <div class="modal-card guide-card">
+        <button id="close-guide" class="close" aria-label="Close">×</button>
+        <p class="eyebrow">TRAVELER'S TABLET</p><h2 id="guide-title">Survive the curse</h2>
+        <div class="guide-grid">
+          <div><kbd>A D</kbd><kbd>← →</kbd><h3>Move</h3><p>Run on land. Drift through currents in water.</p></div>
+          <div><kbd>W</kbd><kbd>SPACE</kbd><h3>Jump / surface</h3><p>Jump onto ledges; their undersides are solid. At the waterline, press again to launch toward an open edge.</p></div>
+          <div><kbd>S</kbd><kbd>↓</kbd><h3>Crouch / dive</h3><p>Duck beneath attacks and dive below projectiles.</p></div>
+          <div><kbd>X</kbd><kbd>CLICK</kbd><h3>Golden strike</h3><p>Freeze nearby monsters into solid platforms.</p></div>
+          <div><kbd>E</kbd><kbd>RIGHT CLICK</kbd><h3>Bread / brick</h3><p>Make a brick on land. Tributary water suppresses the curse long enough to eat for +25%.</p></div>
+          <div><kbd>ESC</kbd><h3>Pause</h3><p>Catch your breath. The hunger clock stops too.</p></div>
+        </div>
+        <div class="legend"><span>🍷 Wine heals 30%</span><span>✦ Treasure adds score</span><span>🌾 Grass hides you in water</span></div>
+      </div>
+    </section>
+
+    <section id="result" class="screen" aria-live="polite">
+      <div class="result-card">
+        <p id="result-kicker" class="eyebrow"></p><h2 id="result-title"></h2>
+        <div id="result-art" class="result-art"></div>
+        <p id="result-text"></p>
+        <div class="result-stats"><div><span>TIME</span><strong id="result-time"></strong></div><div><span>WINE</span><strong id="result-wine"></strong></div><div><span>SCORE</span><strong id="result-score"></strong></div></div>
+        <section class="leaderboard" aria-labelledby="leaderboard-title">
+          <div class="leaderboard-heading"><h3 id="leaderboard-title">Local leaderboard</h3><strong id="result-rank"></strong></div>
+          <table><thead><tr><th>Rank</th><th>Runner</th><th>Mode</th><th>Time</th><th>Points</th></tr></thead><tbody id="leaderboard-rows"></tbody></table>
+          <p id="leaderboard-note">Winning runs on this browser are ranked by points, then fastest time.</p>
+        </section>
+        <div class="menu-actions"><button id="again" class="primary">Run again</button><button id="export-scores" class="secondary">Export scores (.txt)</button><button id="home" class="secondary">Title screen</button></div>
+      </div>
+    </section>
+
+    <div id="touch" aria-label="Touch controls">
+      <div class="touch-left"><button data-key="left" aria-label="Move left">◀</button><button data-key="right" aria-label="Move right">▶</button></div>
+      <div class="touch-right"><button data-key="down" aria-label="Crouch or dive">▼</button><button data-key="jump" class="jump" aria-label="Jump or surface">↑</button><button data-key="attack" id="touch-attack" aria-label="Strike">✊</button><button data-key="eat" id="touch-eat" aria-label="Bread action">▰</button></div>
+    </div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>

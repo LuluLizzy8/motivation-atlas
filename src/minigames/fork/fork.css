@@ -1,0 +1,15 @@
+.fork-game { padding: clamp(12px, 4vw, 28px); background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.fork-story { font-size: 1.2rem; min-height: 6em; border-left: 3px solid var(--dyn); padding-left: 16px; }
+.fork-toggle { display: flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 600; }
+.fork-toggle input { width: 20px; height: 20px; flex-shrink: 0; }
+.fork-help { color: var(--muted); font-size: .9rem; }
+.fork-game progress { width: 100%; accent-color: var(--warn); }
+.fork-routes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-block: 18px; }
+.fork-game button { font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 12px; min-height: 44px; cursor: pointer; overflow-wrap: anywhere; }
+.fork-game button:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-soft); }
+.fork-game button:disabled { opacity: .6; cursor: default; }
+.fork-routes button { text-align: left; }
+.fork-routes span { display: block; margin-top: 10px; font-size: .85rem; color: var(--muted); }
+.fork-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.fork-reflect { margin-top: 20px; padding: 16px; background: var(--dyn-soft); border-radius: 8px; }
+@media (max-width: 480px) { .fork-routes { grid-template-columns: 1fr; } }

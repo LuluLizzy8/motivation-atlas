@@ -1,0 +1,12 @@
+.signal-keeper { padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); }
+.signal-keeper label { display: flex; gap: 10px; align-items: center; min-height: 44px; }
+.signal-keeper input { width: 22px; height: 22px; flex-shrink: 0; accent-color: var(--accent); }
+.signal-controls { display: flex; flex-wrap: wrap; gap: 12px; }
+.signal-controls button { min-height: 48px; padding: 12px 18px; border: 2px solid var(--accent); border-radius: 8px; background: var(--accent-soft); color: var(--ink); font: inherit; cursor: pointer; }
+.signal-controls button[aria-disabled="true"] { opacity: .6; cursor: default; }
+.signal-track { position: relative; height: 90px; margin: 24px 10px 10px; border: 1px solid var(--line); background: var(--bg); }
+.signal-target { position: absolute; top: 12px; bottom: 12px; box-sizing: border-box; border: 3px dashed var(--accent); background: var(--accent-soft); }
+.signal-marker { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; transform: translateX(-50%); background: var(--ink); }
+.signal-track-label { color: var(--muted); font-size: .85rem; }
+.signal-history { padding-left: 24px; font-size: .9rem; }
+.signal-reflection { border-top: 1px solid var(--line); margin-top: 16px; }

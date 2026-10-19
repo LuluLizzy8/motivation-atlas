@@ -1,0 +1,24 @@
+.lifeline { display: grid; gap: 16px; }
+.lifeline-board { display: grid; gap: 10px; justify-items: center; text-align: center; }
+.lifeline-team { display: grid; }
+.lifeline-name { font-size: 0.85rem; color: var(--muted); }
+.lifeline-score { font: 700 2rem var(--display); font-variant-numeric: tabular-nums; }
+.lifeline-turns { font-size: 0.9rem; color: var(--muted); }
+.lifeline-players { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+.lifeline-player { display: grid; }
+.lifeline-line { font-size: 0.85rem; color: var(--muted); }
+.lifeline-die { font-size: 4rem; line-height: 1; min-height: 4rem; }
+.lifeline-status { margin: 0; min-height: 1.6em; }
+.lifeline-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.lifeline-prompt { display: grid; gap: 8px; justify-items: center; border: 2px solid var(--accent); border-radius: 8px; padding: 12px 16px; }
+.lifeline-prompt[hidden] { display: none; }
+.lifeline-question { margin: 0; font-weight: 600; }
+.lifeline-btn { font: 600 1rem var(--body); padding: 10px 22px; border-radius: 8px; border: 2px solid var(--ink); background: var(--ink); color: var(--surface); cursor: pointer; min-width: 110px; }
+.lifeline-btn.secondary { background: none; color: var(--ink); }
+.lifeline-btn[aria-disabled="true"] { opacity: 0.4; cursor: not-allowed; }
+.lifeline-mechanics { border: 1px solid var(--line); border-radius: 8px; display: grid; gap: 8px; padding: 12px 16px; }
+.lifeline-mechanics legend { font: 500 0.75rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.lifeline-mechanics .lifeline-btn { justify-self: start; }
+.lifeline-reflect { border-left: 4px solid var(--aes, var(--accent)); padding: 8px 16px; background: var(--bg); border-radius: 0 6px 6px 0; }
+.lifeline-reflect h4 { margin: 0 0 4px; }
+.lifeline-reflect ul { margin: 0; padding-left: 18px; }

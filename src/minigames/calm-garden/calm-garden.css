@@ -1,0 +1,77 @@
+.calm-garden { display: grid; gap: 16px; min-width: 0; }
+.calm-garden [hidden] { display: none; }
+.calm-garden .calm-garden-intro { padding: 18px 20px; border: 1px solid var(--dyn); border-radius: 16px; background: var(--dyn-soft); }
+.calm-garden .calm-garden-intro p { margin: 6px 0 0; }
+.calm-garden .calm-garden-eyebrow { color: var(--dyn); font: 600 0.8rem var(--mono); }
+.calm-garden .calm-garden-controls, .calm-garden .calm-garden-flowers { display: grid; gap: 10px; margin: 0; min-width: 0; border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px 16px; }
+.calm-garden legend { padding-inline: 6px; font-weight: 600; }
+.calm-garden .calm-garden-toggle { display: flex; align-items: center; gap: 10px; min-height: 44px; width: fit-content; cursor: pointer; font-weight: 600; }
+.calm-garden input { width: 22px; height: 22px; margin: 0; accent-color: var(--dyn); flex-shrink: 0; }
+.calm-garden .calm-garden-hint { margin: 0; color: var(--muted); font-size: 0.85rem; }
+.calm-garden .calm-garden-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.calm-garden .calm-garden-button { min-height: 44px; padding: 9px 14px; border: 1px solid var(--dyn); border-radius: 9px; background: var(--dyn); color: var(--surface); font: 600 0.95rem var(--body); line-height: 1.4; cursor: pointer; touch-action: manipulation; }
+.calm-garden .calm-garden-button[aria-disabled="true"] { background: var(--surface); color: var(--muted); border-color: var(--line); cursor: default; }
+.calm-garden .calm-garden-secondary { background: var(--surface); color: var(--dyn); }
+.calm-garden .calm-garden-palette { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.calm-garden .calm-garden-choice { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; min-width: 0; min-height: 54px; padding: 8px 6px; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; font-size: 0.85rem; }
+.calm-garden .calm-garden-choice[data-selected="true"] { border-color: var(--dyn); background: var(--dyn-soft); }
+.calm-garden .calm-garden-choice .calm-garden-art { width: 52px; }
+.calm-garden .calm-garden-choice span { overflow-wrap: anywhere; }
+.calm-garden .calm-garden-summary { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; font-size: 0.9rem; }
+.calm-garden [data-countdown] { margin-left: auto; font: 600 1rem var(--mono); font-variant-numeric: tabular-nums; }
+.calm-garden [data-planted], .calm-garden [data-completed] { color: var(--muted); }
+.calm-garden progress { display: block; width: 100%; max-width: 100%; height: 8px; accent-color: var(--dyn); }
+.calm-garden .calm-garden-status { margin: 0; min-height: 3.2em; padding: 10px 14px; border-radius: 10px; background: var(--bg); }
+/* The visual topology always matches the rules: three columns, four rows. */
+.calm-garden .calm-garden-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.calm-garden .calm-garden-plot { min-width: 0; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.calm-garden .calm-garden-plot-button { display: grid; justify-items: center; gap: 5px; width: 100%; height: 100%; min-width: 44px; min-height: 44px; padding: 10px 6px; border: 0; border-radius: 13px; background: none; color: var(--ink); font: inherit; cursor: pointer; touch-action: manipulation; }
+.calm-garden .calm-garden-plot-button[aria-disabled="true"] { cursor: default; }
+.calm-garden .calm-garden-plot[data-preview="true"] { border-color: var(--dyn); outline: 2px dashed var(--dyn); outline-offset: -4px; background: var(--dyn-soft); }
+.calm-garden .calm-garden-plot[data-stage="bloomed"] { border-color: var(--dyn); }
+.calm-garden button:focus-visible, .calm-garden input:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.calm-garden .calm-garden-plot-number { color: var(--muted); font: 500 0.75rem var(--mono); }
+.calm-garden .calm-garden-stage { color: var(--muted); font-size: 0.8rem; overflow-wrap: anywhere; max-width: 100%; }
+.calm-garden .calm-garden-plot-action { font-size: 0.9rem; font-weight: 600; color: var(--dyn); }
+.calm-garden .calm-garden-picture { display: block; width: 100%; max-width: 160px; pointer-events: none; }
+.calm-garden .calm-garden-art { display: block; width: 100%; height: auto; overflow: visible; }
+.calm-garden .calm-garden-soil { fill: var(--aes-soft); }
+.calm-garden .calm-garden-stem { fill: none; stroke: var(--dyn); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.calm-garden .calm-garden-furrow { fill: none; stroke: var(--aes); stroke-width: 2; stroke-linecap: round; }
+.calm-garden .calm-garden-leaf { fill: var(--dyn); }
+.calm-garden .calm-garden-bud { fill: var(--aes); }
+.calm-garden [data-flower="bellflower"] .calm-garden-bud { fill: var(--accent); }
+.calm-garden [data-flower="daisy"] .calm-garden-bud { fill: var(--surface); stroke: var(--aes); }
+.calm-garden .calm-garden-daisy-petal { fill: var(--surface); stroke: var(--aes); stroke-width: 1; }
+.calm-garden .calm-garden-daisy-center { fill: var(--aes); }
+.calm-garden .calm-garden-poppy-petal { fill: var(--aes); }
+.calm-garden .calm-garden-poppy-center { fill: var(--ink); }
+.calm-garden .calm-garden-bell { fill: var(--accent); stroke: var(--mech); stroke-width: 1; }
+.calm-garden .calm-garden-planted { animation: calm-garden-plant 180ms ease-out; transform-origin: 50% 85%; }
+.calm-garden .calm-garden-bloomed { animation: calm-garden-bloom 240ms ease-out; transform-origin: 50% 85%; }
+.calm-garden .calm-garden-ripple { fill: none; stroke: var(--dyn); stroke-width: 2; transform-origin: 80px 80px; animation: calm-garden-water 240ms ease-out both; }
+.calm-garden .calm-garden-reflection { padding: 16px 18px; border-left: 4px solid var(--dyn); border-radius: 0 12px 12px 0; background: var(--dyn-soft); }
+.calm-garden .calm-garden-reflection h4 { margin: 0 0 8px; }
+.calm-garden .calm-garden-reflection p { margin: 0 0 8px; }
+.calm-garden .calm-garden-reflection ul { margin: 0; padding-left: 20px; }
+@keyframes calm-garden-plant { from { transform: translateY(3px) scale(0.96); opacity: 0.65; } to { transform: none; opacity: 1; } }
+@keyframes calm-garden-bloom { from { transform: scale(0.92); } to { transform: none; } }
+@keyframes calm-garden-water { from { transform: scale(0.65); opacity: 0.7; } to { transform: scale(1.25); opacity: 0; } }
+@media (max-width: 600px) {
+  .calm-garden .calm-garden-grid { gap: 8px; }
+  .calm-garden .calm-garden-plot-button { padding: 10px 3px; }
+  .calm-garden .calm-garden-palette { gap: 5px; }
+  .calm-garden .calm-garden-choice { flex-direction: column; padding: 8px 2px; font-size: 0.75rem; }
+}
+@media (max-width: 400px) {
+  .calm-garden .calm-garden-controls, .calm-garden .calm-garden-flowers { padding-inline: 8px; }
+  .calm-garden .calm-garden-grid { gap: 6px; }
+  .calm-garden .calm-garden-plot-number { font-size: 0.65rem; }
+  .calm-garden .calm-garden-stage { font-size: 0.7rem; }
+  .calm-garden .calm-garden-plot-action { font-size: 0.75rem; }
+  .calm-garden [data-countdown] { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .calm-garden .calm-garden-planted, .calm-garden .calm-garden-bloomed { animation: none; }
+  .calm-garden .calm-garden-ripple { animation: none; opacity: 0; }
+}
