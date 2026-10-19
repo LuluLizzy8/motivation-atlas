@@ -1,6 +1,6 @@
 # Gone Fishing: when do the bites come?
 
-Motivator: Chance. Author: LuluLizzy.
+Motivator: Chance. Author: LuluLizzy8.
 
 ## Mechanic
 
@@ -18,6 +18,11 @@ With random bites, they said it felt very random, and that was the fun: hoping f
 
 ## Sources
 
-From the course note's Chance section: variable-ratio reinforcement, the slot machine's schedule: "The repeat play of gamblers is strong evidence of the power of variable reinforcement" (Salen and Zimmerman 2003, ch. 24, "Rewards and Schedules"). The toggle swaps that schedule for a fixed one with the same average, so any change in persistence comes from the schedule alone.
+From the course note's Chance section:
+
+- Variable-ratio reinforcement, the slot machine's schedule: "The repeat play of gamblers is strong evidence of the power of variable reinforcement" (Salen and Zimmerman 2003, ch. 24, "Rewards and Schedules").
+- Variable rewards: a one-in-three chance of thirty points "stays rewarding for a much longer time" than ten points every time, though the average is the same (Schell 2019, p. 233).
+
+The toggle swaps the variable schedule for a fixed one with the same average, so any change in persistence comes from the schedule alone.
 
 Built with Claude Code. One suggestion I kept: a half-second "waiting for a bite" pause before each cast, so hope has a moment to build. The fish and rod are system emoji.

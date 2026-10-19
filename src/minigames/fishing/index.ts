@@ -105,6 +105,6 @@ export const fishing: Minigame = {
   slug: "fishing",
   title: "Gone Fishing: when do the bites come?",
   motivators: ["chance"],
-  author: "LuluLizzy",
+  author: "LuluLizzy8",
   mount,
 };
