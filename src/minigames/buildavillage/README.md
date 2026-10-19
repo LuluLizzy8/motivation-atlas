@@ -2,7 +2,7 @@
 
 Author: jessicafu232.
 
-## How to play
+## Mechanic
 
 - Choose **Start round**, then **Confirm** for the tutorial or **Skip**.
 - Walk with **WASD**, **arrow keys**, or the direction buttons.
@@ -10,15 +10,9 @@ Author: jessicafu232.
 - Stand **on a named plot** and press **E** to build.
 - Complete **all four buildings**. Try both overnight toggle settings.
 
-## Motivator(s)
+The contextual action button also gathers and builds for mouse and touch. Build the four plots in any order. Days last 20 seconds and nights last 6 seconds; resource patches recover fully. The tutorial pauses the day clock until your first building is complete; Skip starts it immediately.
 
-Progress, completion, and power (progress).
-
-## Mechanic
-
-Build a Village! is a tiny walkable farm. Stand on trees, rocks, or named plots and press E to gather or build; a contextual button supports mouse and touch. Four plots can be built in any order. The game includes an optional in-map tutorial (the day clock stays paused until the first building is complete; Skip starts it immediately), full resource recovery, and a celebration when all four buildings are complete. Moreover, there is a 20 second daytime period when the player can walk around and gather, and a 6 second nighttime period when resources recover (and/or when you reset progress, based on whether the toggle is on or off).
-
-The toggle is based on the idea of "Sustenance" (Salen and Zimmerman 2003, ch. 24, “Rewards and Schedules”). Keep everything overnight preserves gathered resources and buildings; switching it off clears them at night. The setting is fixed for each round.
+**Keep everything overnight** preserves your resources and buildings; switching it off clears them at night. Choose the setting before starting a round.
 
 ## Dynamic
 

@@ -2,32 +2,8 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { BUILDINGS, DEFAULT_OPTIONS, FARM, PLOTS, WIDTH, build, canBuild, interact, newGame, step, tick, type HarvestState } from "../src/minigames/buildavillage/game";
 import { buildAVillage } from "../src/minigames/buildavillage";
-import { renderRoute } from "../src/app";
 
 afterEach(() => { vi.useRealTimers(); document.body.replaceChildren(); });
-
-describe("Build a Village! page instructions", () => {
-  it("shows quick-start bullets above the game and the detailed statement below it", () => {
-    const root = document.createElement("div");
-    const unmount = renderRoute(root, "#/m/progress");
-    const game = [...root.querySelectorAll(".minigame")].find((el) => el.querySelector("h3")?.textContent === "Build a Village!")!;
-    const howTo = game.querySelector(".minigame-howto")!;
-    const host = game.querySelector(".minigame-host")!;
-    const about = game.querySelector(".minigame-about")!;
-    expect(howTo.querySelectorAll("li").length).toBe(5);
-    expect(howTo.textContent).toContain("press E to build");
-    expect(howTo.textContent).not.toContain("Motivator(s)");
-    expect(howTo.textContent).not.toContain("Sustenance");
-    expect(howTo.nextElementSibling).toBe(host);
-    expect(host.nextElementSibling).toBe(about);
-    expect(about.textContent).toContain("Mechanics");
-    expect(about.textContent).toContain("Motivator(s)");
-    expect([...about.querySelectorAll("h4")].slice(0, 2).map((el) => el.textContent)).toEqual(["Motivator(s)", "Mechanics"]);
-    expect(about.textContent).toContain("took their time with gathering materials");
-    expect(about.textContent).toContain("AI Disclosure: Codex helped write this README and helped build the game, including its original SVG graphics. No external art or audio was borrowed.");
-    unmount();
-  });
-});
 
 function walk(s: HarvestState, target: number): HarvestState {
   while (s.player % WIDTH !== target % WIDTH) s = step(s, Math.sign(target % WIDTH - s.player % WIDTH), 0);
