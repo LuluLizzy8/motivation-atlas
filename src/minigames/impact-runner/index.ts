@@ -1,8 +1,5 @@
 import { h, s } from "../../lib/dom";
 import type { Minigame } from "../types";
-import { safeBlock } from "../../lib/markdown";
-import { readmeSections } from "../readme";
-import readmeText from "./README.md?raw";
 import { jump, newRun, step, ROUND_SECONDS } from "./game";
 import "./runner.css";
 
@@ -39,14 +36,15 @@ function mount(el: HTMLElement): () => void {
     h("div", { class: "ir-controls" }, start, jumpButton),
     h("label", { class: "ir-toggle" }, effects, " Sensation effects and animations"),
     h("p", { class: "ir-hint" }, "Jump with the button, Space, or ↑ while the game has focus. Hit a trash bin and the run ends. Survive 90 seconds to finish. The effects toggle also animates the running stride and jump pose. Change it anytime; the rules stay the same."),
-);
-  const readme = h("details", { class: "ir-readme" }, h("summary", {}, "README"));
-  for (const [heading, markdown] of Object.entries(readmeSections(readmeText))) {
-    const body = h("div");
-    body.innerHTML = safeBlock(markdown);
-    readme.append(h("h4", {}, heading), body);
-  }
-  root.append(readme);
+    h("section", { class: "ir-reflect" },
+      h("h4", {}, "Check it against your own play"),
+      h("ul", {},
+        h("li", {}, "Does the same jump feel more powerful with flames?"),
+        h("li", {}, "Was the feedback exciting, distracting, or irrelevant?"),
+        h("li", {}, "Did switching the mechanic change your actions or feelings?"),
+      ),
+    ),
+  );
   el.append(root);
   function render() {
     player.setAttribute("transform", `translate(100 ${200 - state.y})`);

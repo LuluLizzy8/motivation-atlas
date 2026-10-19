@@ -19,10 +19,3 @@
 .ir-hint, .ir-reflect { font-size: .9rem; }
 .ir-reflect { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 8px; }
 .ir-reflect h4 { margin-bottom: 6px; }
-
-/* Only this game's wrapper uses its own complete README dropdown. */
-.minigame:has(> .minigame-host > .impact-runner) > .minigame-howto,
-.minigame:has(> .minigame-host > .impact-runner) > .minigame-about { display: none; }
-.ir-readme { margin-top: 20px; border-top: 1px solid var(--line); padding-top: 14px; }
-.ir-readme summary { cursor: pointer; font-weight: 600; }
-.ir-readme h4 { margin-bottom: 8px; }
