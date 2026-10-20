@@ -1,4 +1,6 @@
-import { describe, expect, it } from "vitest";
+// @vitest-environment jsdom
+import { describe, expect, it, vi } from "vitest";
+import { impactRunner } from "../src/minigames/impact-runner";
 import { jump, newRun, step, type RunnerState } from "../src/minigames/impact-runner/game";
 const running = (): RunnerState => ({ ...newRun(), phase: "running" });
 describe("Impact Runner rules", () => {
@@ -36,5 +38,36 @@ describe("Impact Runner rules", () => {
   it("finishes a surviving run at 90 seconds", () => {
     const state = step({ ...running(), elapsed: 89.99 }, .02);
     expect(state.phase).toBe("complete");
+  });
+});
+
+
+describe("Impact Runner keyboard controls", () => {
+  it("returns focus to Run again after a collision ends a run", () => {
+    let nextFrame: FrameRequestCallback = () => {};
+    vi.stubGlobal("requestAnimationFrame", (callback: FrameRequestCallback) => {
+      nextFrame = callback;
+      return 1;
+    });
+    vi.stubGlobal("cancelAnimationFrame", vi.fn());
+    const host = document.createElement("div");
+    document.body.append(host);
+    const unmount = impactRunner.mount(host);
+    try {
+      const [start, jumpButton] = host.querySelectorAll("button");
+      start.click();
+      expect(document.activeElement).toBe(jumpButton);
+      for (let time = 16; time <= 3000 && !jumpButton.disabled; time += 16) nextFrame(time);
+      expect(jumpButton.disabled).toBe(true);
+      expect(start.textContent).toBe("Run again");
+      expect(document.activeElement).toBe(start);
+      const space = new KeyboardEvent("keydown", { code: "Space", bubbles: true, cancelable: true });
+      start.dispatchEvent(space);
+      expect(space.defaultPrevented).toBe(false);
+    } finally {
+      unmount();
+      host.remove();
+      vi.unstubAllGlobals();
+    }
   });
 });

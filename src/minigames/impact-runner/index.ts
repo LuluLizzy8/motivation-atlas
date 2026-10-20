@@ -88,19 +88,20 @@ function mount(el: HTMLElement): () => void {
     if (state.phase === "running") frame = requestAnimationFrame(tick);
     else {
       burst = 0; landing = 0; render();
-      status.textContent = state.phase === "lost" ? `Trash bin hit — run over! You cleared ${state.cleared}. Try again with the effects switched.` : "90 seconds cleared! Try the other setting and compare how it feels.";
+      status.textContent = state.phase === "lost" ? `Trash bin hit. Run over! You cleared ${state.cleared}. Try again with the effects switched.` : "90 seconds cleared! Try the other setting and compare how it feels.";
       start.textContent = "Run again";
+      start.focus({ preventScroll: true });
     }
   }
   const onStart = () => {
     cancelAnimationFrame(frame);
     state = { ...newRun(), phase: "running" }; previous = 0; burst = 0; landing = 0;
-    status.textContent = "Running — jump before the trash bin reaches you.";
+    status.textContent = "Running. Jump before the trash bin reaches you.";
     start.textContent = "Restart run";
     render(); jumpButton.focus(); frame = requestAnimationFrame(tick);
   };
   const onKey = (event: KeyboardEvent) => {
-    if (event.target === effects || event.target === start) return;
+    if (event.target !== jumpButton) return;
     if (event.code === "Space" || event.code === "ArrowUp") {
       event.preventDefault();
       if (!event.repeat) doJump();
@@ -121,5 +122,5 @@ function mount(el: HTMLElement): () => void {
   };
 }
 export const impactRunner: Minigame = {
-  slug: "impact-runner", title: "Impact Runner", motivators: ["sensation"], author: "@alexhekmat", mount,
+  slug: "impact-runner", title: "Impact Runner", motivators: ["sensation"], author: "alexhekmat", mount,
 };
