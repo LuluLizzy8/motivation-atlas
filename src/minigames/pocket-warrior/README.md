@@ -1,7 +1,5 @@
 # Pocket Warrior
 
-Motivator: Challenge and mastery (`challenge`). Author: lwg0320 -- dg3517.
-
 ## Mechanic
 
 Play eight pool layouts in a 60-second round. Choose Easy (1 base point) or
