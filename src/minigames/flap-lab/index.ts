@@ -85,10 +85,13 @@ function mount(el: HTMLElement): () => void {
     score.textContent = String(state.score);
     time.textContent = Math.max(0, WORLD.duration - state.elapsed).toFixed(1);
     best.textContent = String(bests.get(settingsKey(selected)) ?? 0);
-    startButton.textContent = state.phase === "ended" ? "Retry" : "Start";
+    const startLabel = state.phase === "ended" ? "Retry" : "Start";
+    const pauseLabel = state.phase === "paused" ? "Resume" : "Pause";
+    // Keep label nodes stable between pointerdown and click, including in Safari.
+    if (startButton.textContent !== startLabel) startButton.textContent = startLabel;
     startButton.setAttribute("aria-disabled", String(locked));
     flapButton.setAttribute("aria-disabled", String(state.phase === "paused" || state.phase === "ended"));
-    pauseButton.textContent = state.phase === "paused" ? "Resume" : "Pause";
+    if (pauseButton.textContent !== pauseLabel) pauseButton.textContent = pauseLabel;
     pauseButton.setAttribute("aria-disabled", String(!locked));
     bird.setAttribute("cy", String(state.birdY));
     const active = new Set(state.pipes.map((pipe) => pipe.id));
@@ -198,10 +201,8 @@ function mount(el: HTMLElement): () => void {
       event.preventDefault();
     }
   });
-  listen(root, "focusout", (raw) => {
-    const nextTarget = (raw as FocusEvent).relatedTarget;
-    if (!(nextTarget instanceof Node) || !root.contains(nextTarget)) pauseGame("Paused because focus left the game. Choose Resume when ready.");
-  });
+  // Pause on tab/window changes. Safari can blur the board when a game button
+  // is clicked without focusing that button, so focusout must not pause play.
   listen(document, "visibilitychange", () => {
     if (document.hidden) pauseGame("Paused while the tab is hidden. Choose Resume when ready.");
   });

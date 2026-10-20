@@ -327,7 +327,57 @@ describe("Bouncy Ball input and lifecycle", () => {
     ui.unmount();
   });
 
-  it("pauses on hidden tabs and external focus, requiring explicit resume", () => {
+  it("flaps when clicking the button blurs the board without focusing the button", () => {
+    const ui = setup();
+    ui.click("start"); ui.frame(); ui.advance(0.2);
+    // Safari can leave relatedTarget null instead of focusing the clicked button.
+    ui.board.blur();
+    expect(document.activeElement).toBe(document.body);
+    ui.click("flap");
+    expect(ui.phase()).toBe("running");
+    ui.frame();
+    expect(ui.birdY()).toBeCloseTo(step(flap(step(start(), 0.2))).birdY, 6);
+    expect(ui.frames.size).toBe(1);
+    ui.unmount();
+  });
+
+  it("pauses once and resumes when clicking Pause blurs the board without focusing the button", () => {
+    const ui = setup();
+    ui.click("start"); ui.frame(); ui.advance(0.2);
+    const y = ui.birdY();
+    const time = ui.q("[data-time]").textContent;
+    ui.board.blur();
+    expect(document.activeElement).toBe(document.body);
+    ui.click("pause");
+    expect(ui.phase()).toBe("paused");
+    expect(ui.q('[data-action="pause"]').textContent).toBe("Resume");
+    expect(ui.frames.size).toBe(0);
+    ui.frame(1000);
+    expect(ui.birdY()).toBe(y);
+    expect(ui.q("[data-time]").textContent).toBe(time);
+    ui.click("pause");
+    expect(ui.phase()).toBe("running");
+    expect(document.activeElement).toBe(ui.board);
+    ui.frame();
+    expect(ui.birdY()).toBe(y);
+    ui.frame();
+    expect(ui.birdY()).toBeCloseTo(step(step(start(), 0.2)).birdY, 6);
+    ui.unmount();
+  });
+
+  it("keeps running when focus moves between controls or elsewhere on the page", () => {
+    const ui = setup();
+    ui.click("start"); ui.frame();
+    ui.q<HTMLButtonElement>('[data-action="flap"]').focus();
+    expect(ui.phase()).toBe("running");
+    const outside = document.createElement("button");
+    document.body.append(outside); outside.focus();
+    expect(ui.phase()).toBe("running");
+    expect(ui.frames.size).toBe(1);
+    ui.unmount();
+  });
+
+  it("pauses on hidden tabs and window blur, requiring explicit resume", () => {
     const ui = setup();
     ui.click("start"); ui.frame();
     const hidden = vi.spyOn(document, "hidden", "get").mockReturnValue(true);
@@ -337,14 +387,12 @@ describe("Bouncy Ball input and lifecycle", () => {
     document.dispatchEvent(new Event("visibilitychange"));
     expect(ui.phase()).toBe("paused");
     ui.click("pause");
-    ui.q<HTMLButtonElement>('[data-action="flap"]').focus();
-    expect(ui.phase()).toBe("running");
-    const outside = document.createElement("button");
-    document.body.append(outside); outside.focus();
-    expect(ui.phase()).toBe("paused");
-    ui.click("pause");
     window.dispatchEvent(new Event("blur"));
     expect(ui.phase()).toBe("paused");
+    window.dispatchEvent(new Event("focus"));
+    expect(ui.phase()).toBe("paused");
+    ui.click("pause");
+    expect(ui.phase()).toBe("running");
     ui.unmount();
   });
 
