@@ -1,0 +1,96 @@
+.harvest-game { --harvest-night-ink: #050b18; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; color: var(--ink); width: 100%; min-width: 0; }
+.harvest-board, .harvest-panel { min-width: 0; margin: 0; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.harvest-eyebrow { margin: 0; color: var(--muted); font-size: 0.8rem; }
+.harvest-day { margin: 6px 0; font-size: 1.1rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.harvest-clock { display: block; width: 100%; height: 8px; accent-color: var(--accent); }
+.harvest-resources { margin: 12px 0; font-size: 1.4rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.harvest-map { position: relative; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(0, 1fr)); width: 100%; min-width: 0; aspect-ratio: 7 / 6; border: 2px solid var(--line); border-radius: 4px; background: var(--dyn-soft); }
+.harvest-tile { position: relative; display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 0; padding: 2px; border: 1px solid var(--line); background: transparent; }
+.harvest-plot { background: var(--aes-soft); }
+.harvest-plot > .harvest-sprite { height: 72%; align-self: flex-start; }
+.harvest-empty-plot > .harvest-sprite { opacity: 0.3; }
+.harvest-plot-target { outline: 3px solid var(--accent); outline-offset: -3px; }
+.harvest-plot-name { position: absolute; bottom: 1px; inset-inline: 0; text-align: center; font-size: clamp(0.5rem, 1.1vw, 0.75rem); line-height: 1.2; color: var(--ink); }
+.harvest-objective { margin: 0 0 12px; padding: 10px; border-left: 4px solid var(--accent); background: var(--accent-soft); font-weight: 700; font-size: 0.95rem; }
+.harvest-player { position: absolute; display: flex; align-items: center; justify-content: center; width: calc(100% / 7); height: calc(100% / 6); pointer-events: none; transition: left 100ms linear, top 100ms linear; }
+.harvest-sprite { display: block; width: 85%; height: 85%; max-width: 56px; image-rendering: pixelated; }
+.harvest-pixel-roof, .harvest-pixel-warm { fill: var(--aes); }
+.harvest-pixel-leaf { fill: var(--dyn); }
+.harvest-pixel-light { fill: var(--surface); }
+.harvest-pixel-stone { fill: var(--muted); }
+.harvest-pixel-blue { fill: var(--accent); }
+.harvest-pixel-ink { fill: var(--ink); }
+.harvest-btn { min-height: 44px; max-width: 100%; padding: 10px 14px; border: 1px solid var(--accent); border-radius: 8px; font: inherit; font-weight: 600; color: var(--ink); background: var(--surface); cursor: pointer; touch-action: manipulation; }
+.harvest-btn:hover:not([aria-disabled="true"]) { border-color: var(--ink); }
+.harvest-btn[aria-disabled="true"] { color: var(--muted); border-color: var(--line); cursor: default; }
+.harvest-build { width: 100%; }
+.harvest-start { margin-bottom: 12px; }
+.harvest-gather { margin-bottom: 10px; }
+.harvest-underfoot > .harvest-sprite { opacity: 0.35; }
+.harvest-health, .harvest-recovery { position: absolute; left: 12%; right: 12%; bottom: 7px; height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.harvest-recovery { bottom: 3px; height: 2px; }
+.harvest-health-fill, .harvest-recovery-fill { display: block; height: 100%; background: var(--dyn); }
+.harvest-recovery-fill { background: var(--accent); }
+.harvest-night-heading { align-items: center; justify-content: center; gap: 12px; color: var(--accent); padding: 8px 0; font-weight: 600; }
+.harvest-night-heading:not([hidden]) { display: flex; }
+.harvest-moon { width: 40px; height: 40px; }
+.harvest-night-shade { position: absolute; inset: 0; background: var(--harvest-night-ink); pointer-events: none; transition: opacity 700ms ease; }
+.harvest-transition { position: absolute; left: 6%; right: 6%; top: 8%; padding: 8px 10px; border-radius: 6px; background: var(--surface); color: var(--ink); text-align: center; font-size: 0.85rem; font-weight: 700; pointer-events: none; z-index: 5; }
+.harvest-victory { position: absolute; top: 7%; left: 6%; right: 6%; z-index: 5; margin: 0; padding: 12px; border: 1px solid var(--dyn); border-radius: 8px; background: var(--surface); color: var(--dyn); font-weight: 700; text-align: center; pointer-events: none; }
+.harvest-tutorial { position: absolute; top: 6px; left: 6px; right: 6px; max-width: 360px; z-index: 6; padding: 8px 10px; border: 2px solid var(--accent); border-radius: 8px; background: var(--surface); color: var(--ink); box-shadow: 0 3px 0 var(--accent-soft); pointer-events: none; }
+.harvest-tutorial-title { display: block; font-size: 1rem; line-height: 1.3; }
+.harvest-tutorial-text { margin: 5px 0 0; font-size: 0.9rem; line-height: 1.4; }
+.harvest-tutorial-build-step { top: auto; bottom: 6px; }
+.harvest-tutorial-complete { position: absolute; left: 6%; right: 6%; bottom: 8%; z-index: 6; padding: 8px 10px; border: 1px solid var(--dyn); border-radius: 6px; background: var(--surface); color: var(--dyn); text-align: center; font-size: 0.95rem; font-weight: 700; pointer-events: none; }
+.harvest-popup { position: absolute; top: 40%; left: 5%; right: 5%; padding: 12px; border: 2px solid var(--warn); border-radius: 8px; background: var(--surface); color: var(--ink); font-weight: 700; font-size: 0.85rem; z-index: 7; pointer-events: none; }
+.harvest-intro { position: absolute; inset: 0; z-index: 8; padding: 8px; background: var(--surface); border: 2px solid var(--accent); }
+.harvest-intro:not([hidden]) { display: grid; place-items: center; }
+.harvest-intro-card { width: 100%; max-width: 300px; text-align: center; }
+.harvest-intro-card > strong { font-size: 1.1rem; }
+.harvest-intro-card > p { margin: 6px 0 12px; font-size: 0.9rem; }
+.harvest-intro-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+.harvest-tree-hint { outline: 2px solid var(--accent); outline-offset: -3px; }
+.harvest-confetti { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 4; }
+.harvest-confetti-piece { position: absolute; top: -10%; animation: harvest-fall var(--harvest-fall-duration, 4s) linear infinite; }
+.harvest-confetti-paper { display: block; background: currentColor; animation: harvest-flutter var(--harvest-flutter-duration, 1s) ease-in-out infinite; animation-delay: inherit; }
+.harvest-confetti-shape-0 { width: 9px; height: 9px; }
+.harvest-confetti-shape-1 { width: 5px; height: 13px; }
+.harvest-confetti-shape-2 { width: 11px; height: 8px; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.harvest-confetti-shape-3 { width: 7px; height: 7px; border-radius: 50%; }
+.harvest-confetti-0 { color: var(--accent); }
+.harvest-confetti-1 { color: var(--aes); }
+.harvest-confetti-2 { color: var(--dyn); }
+.harvest-confetti-3 { color: var(--surface); }
+.harvest-confetti-4 { color: var(--mech); }
+.harvest-confetti-5 { color: var(--warn); }
+.harvest-celebrate { z-index: 3; animation: harvest-jump 650ms ease-in-out infinite; }
+@keyframes harvest-fall {
+  0% { top: -10%; transform: translateX(0); }
+  25% { top: 15%; transform: translateX(calc(var(--harvest-drift) * 0.3 + var(--harvest-sway))); }
+  50% { top: 45%; transform: translateX(calc(var(--harvest-drift) * 0.6 - var(--harvest-sway))); }
+  75% { top: 78%; transform: translateX(calc(var(--harvest-drift) * 0.8 + var(--harvest-sway) * 0.5)); }
+  100% { top: 110%; transform: translateX(var(--harvest-drift)); }
+}
+@keyframes harvest-flutter {
+  0%, 100% { transform: rotate(-25deg) rotateY(0deg); }
+  35% { transform: rotate(40deg) rotateY(120deg); }
+  70% { transform: rotate(-40deg) rotateY(240deg); }
+}
+@keyframes harvest-fall-gentle { from { top: -10%; transform: translateX(0); } to { top: 110%; transform: translateX(var(--harvest-drift)); } }
+@keyframes harvest-flutter-gentle { from { transform: rotate(-12deg) scaleX(0.7); } to { transform: rotate(12deg) scaleX(1); } }
+@keyframes harvest-jump { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-24px); } }
+@media (prefers-reduced-motion: reduce) {
+  .harvest-confetti-piece { animation-name: harvest-fall-gentle; animation-duration: calc(var(--harvest-fall-duration) * 1.5); }
+  .harvest-confetti-paper { animation: harvest-flutter-gentle 3s ease-in-out infinite alternate; animation-delay: inherit; }
+  .harvest-celebrate { animation-duration: 1.8s; }
+  .harvest-night-shade { transition: none; }
+}
+.harvest-directions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 12px; }
+.harvest-directions > .harvest-btn { min-width: 44px; }
+.harvest-hint { margin: 10px 0 16px; color: var(--muted); font-size: 0.85rem; }
+.harvest-heading { margin: 0 0 10px; font-size: 1rem; }
+.harvest-status { min-height: 3.2em; margin-bottom: 0; }
+.harvest-toggle { display: flex; align-items: center; gap: 8px; min-height: 44px; cursor: pointer; }
+.harvest-toggle input { width: 20px; height: 20px; flex-shrink: 0; accent-color: var(--accent); }
+.harvest-panel p:last-child { margin-bottom: 0; }
+@media (prefers-reduced-motion: reduce) { .harvest-player { transition: none; } }
